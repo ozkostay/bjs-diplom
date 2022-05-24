@@ -26,7 +26,8 @@ userForm.registerFormCallback = (data) => {
     });
 };
 
-
+// Сделано несколько этапов в homepage.js !!!!!!!!!!!
+// Просьба тоже проверить
 
 
 
