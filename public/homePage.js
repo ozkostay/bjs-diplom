@@ -41,7 +41,7 @@ moneyManager.addMoneyCallback = (data) => {
             ProfileWidget.showProfile(response.data);
             message = 'Пополнение счета на '  + data.amount  + ' ' + data.currency;
         } else {
-            message = 'Ошибка пополнения';
+            message = response.error;
         }
         // Сообщения придумал сам, готовых не нашел
         moneyManager.setMessage(response.success, message) 
@@ -57,7 +57,7 @@ moneyManager.conversionMoneyCallback = (data) => {
             ProfileWidget.showProfile(response.data);
             message = 'Конвертация '  + data.fromAmount + ' ' + data.fromCurrency  + ' в ' + data.targetCurrency;
         } else {
-            message = 'Ошибка конвертации';
+            message = response.error;
         }
         // Сообщения придумал сам, готовых не нашел
         moneyManager.setMessage(response.success, message) 
@@ -73,7 +73,7 @@ moneyManager.sendMoneyCallback = (data) => {
             ProfileWidget.showProfile(response.data);
             message = 'Перевод '  + data.amount + ' ' + data.currency  + ' для ' + data.to;
         } else {
-            message = 'Ошибка перевода';
+            message = response.error;
         }
         // Сообщения придумал сам, готовых не нашел
         moneyManager.setMessage(response.success, message) 
@@ -101,7 +101,7 @@ favoritesWidget.addUserCallback = data => {
             moneyManager.updateUsersList(response.data);
             message = 'Добавлен пользователь: ID '  + data.id + ' Имя ' + data.name;
         } else {
-            message = 'Ошибка добавления пользователя: ID '  + data.id + ' Имя ' + data.name;
+            message = message = response.error;
         }
         favoritesWidget.setMessage(response.success, message);
     });
@@ -114,9 +114,9 @@ favoritesWidget.removeUserCallback = data => {
             favoritesWidget.clearTable();
             favoritesWidget.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
-            message = 'Удален пользователь: ID= '  + data.id + ' Имя ' + data.name;
+            message = 'Пользователь удален';
         } else {
-            message = 'Ошибка удаления пользователя: ID= '  + data;
+            message = response.error;
         }
         favoritesWidget.setMessage(response.success, message);
     });
